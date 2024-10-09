@@ -1,0 +1,134 @@
+/* Scene Setup */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Initially dark */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.dark-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+}
+
+.person {
+    position: absolute;
+    left: -100px; /* Start from the left, off-screen */
+    bottom: 0;
+    width: 100px;
+    height: 200px;
+    background-color: transparent;
+    z-index: 2;
+    animation: walk-in 4s forwards ease-in-out; /* Walking in animation */
+}
+
+.cake {
+    width: 50px;
+    height: 50px;
+    background-color: #FF4081;
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 25px;
+}
+
+@keyframes walk-in {
+    0% { left: -100px; }
+    100% { left: 50%; transform: translateX(-50%); }
+}
+
+.lights-off {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dimmed effect */
+    z-index: 3;
+    animation: lights-up 4s 4s forwards; /* Lights turn on after walking in */
+}
+
+@keyframes lights-up {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Cards Container */
+.cards-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    max-width: 400px;
+    opacity: 0;
+    z-index: 4;
+    animation: fadeIn 3s ease forwards;
+}
+
+.card h1 {
+    font-size: 2em;
+    color: #FF4081;
+}
+
+.card p {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Individual animations for each card */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Button (optional to trigger final action) */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #FF4081;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #EC407A;
+}
